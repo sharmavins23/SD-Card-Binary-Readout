@@ -15,7 +15,7 @@ module Decoder2Bit (
     );
 
     always @(*) begin
-        case(signalIn):
+        case(signalIn)
             2'b11: signalOut = 4'b1000;
             2'b10: signalOut = 4'b0100;
             2'b01: signalOut = 4'b0010;
