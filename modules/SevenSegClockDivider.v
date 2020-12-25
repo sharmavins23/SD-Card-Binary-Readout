@@ -6,6 +6,7 @@
 //              an acceptable value.
 ////////////////////////////////////////////////////////////////////////////////
 
+
 module SevenSegClockDivider (
     // Inputs
     input cmosClock,                // Clock input from FPGA pin H4
