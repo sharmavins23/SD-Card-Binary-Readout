@@ -1,26 +1,21 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 12/24/2020 07:46:35 PM
-// Design Name: 
-// Module Name: Counter2Bit
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// Module Name: Counter - 2 Bit
+//
+// Description: Takes an input clock signal and outputs a 2 bit counter value
+//              that overflows consistently.
+////////////////////////////////////////////////////////////////////////////////
 
 
-module Counter2Bit(
-
+module Counter2Bit (
+    // Inputs
+    input clock,
+    input [1:0] counterIn,
+    // Outputs
+    output reg [1:0] counterOut
     );
+
+    always @(posedge clock) begin
+        counterOut <= counterIn + 1;
+    end
 endmodule
