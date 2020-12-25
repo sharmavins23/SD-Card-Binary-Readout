@@ -16,23 +16,19 @@ module SDCardBinaryReadout(
     );
 
     // Module wiring
-    wire sevenSegmentClock;
-    wire [17:0] sevenSegmentClockDividerCounter;
-    wire [1:0] sevenSegmentCounter;
+    wire sevenSegClock;
+    wire [17:0] sevenSegClockDividerCounter;
+    wire [1:0] sevenSegCounter;
 
     // Module instantiation
-    SevenSegmentClockDivider sevenSegmentClockDivider(
+    SevenSegClockDivider sevenSegClockDivider(
         cmosClock,
-        sevenSegmentClock,
-        sevenSegmentClockDividerCounter,
-        sevenSegmentClock,
-        sevenSegmentClockDividerCounter
+        sevenSegClock,
+        sevenSegClockDividerCounter,
+        sevenSegClock,
+        sevenSegClockDividerCounter
     );
-    Counter2Bit counter2Bit(
-        sevenSegmentClock,
-        sevenSegmentCounter,
-        sevenSegmentCounter
-    );
+    Counter2Bit counter2Bit(sevenSegClock, sevenSegCounter, sevenSegCounter);
 
     always @(*) begin
         
