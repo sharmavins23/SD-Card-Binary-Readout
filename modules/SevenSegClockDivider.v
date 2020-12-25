@@ -1,26 +1,37 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 12/24/2020 07:46:35 PM
-// Design Name: 
-// Module Name: SevenSegClockDivider
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// Module Name: Seven Segment Clock Divider
+//
+// Description: Takes the input 100MHz clock oscillator signal and divides it to
+//              an acceptable value.
+////////////////////////////////////////////////////////////////////////////////
 
-
-module SevenSegClockDivider(
-
+module SevenSegClockDivider (
+    // Inputs
+    input cmosClock,                // Clock input from FPGA pin H4
+    input clockIn,                  // Clock input feedback
+    input [17:0] counter,           // 18 Bit Counter increment
+    // Outputs
+    output reg clockOut,            // Clock output to circuit
+    output reg [17:0] counterOut    // Counter increment output
     );
+
+    // Base counter input
+    initial begin
+        counterOut = 0;
+    end
+
+    // Counter creation for clock division
+    always @(posedge cmosClock) begin
+        // Iterate counter value
+        counterOut <= counter + 1;
+
+        // Apply clock flip
+        if (counterOut == 0) begin
+            clockOut <= ~clockIn;
+        end else begin
+            clockOut <= clockIn;
+        end
+        // Counter overflow check guarantees 2^N clock cycles before swap
+    end
 endmodule
