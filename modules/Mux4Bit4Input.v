@@ -6,7 +6,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-module Mux4Bit4Input(
+module Mux4Bit4Input (
     // Inputs
     input [1:0] selector,
     input [3:0] nibbleA,
