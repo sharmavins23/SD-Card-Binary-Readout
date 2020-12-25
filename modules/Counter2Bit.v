@@ -16,6 +16,7 @@ module Counter2Bit (
     );
 
     always @(posedge clock) begin
+        // Iterate counter value on clock input
         counterOut <= counterIn + 1;
     end
 endmodule
