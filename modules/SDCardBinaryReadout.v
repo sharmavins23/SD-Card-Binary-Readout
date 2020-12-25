@@ -1,26 +1,40 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 12/24/2020 09:17:05 PM
-// Design Name: 
-// Module Name: SDCardBinaryReadout
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// Module Name: Secure Digital Card Binary Readout
+//
+// Description: Top level module that contains all other individual modules for
+//              synthesis.
+////////////////////////////////////////////////////////////////////////////////
 
 
 module SDCardBinaryReadout(
-
+    // Inputs
+    input cmosClock,
+    // Outputs
+    output reg [3:0] sevenSegmentEnable,
+    output reg [7:0] sevenSegmentData
     );
+
+    // Module wiring
+    wire sevenSegmentClock;
+    wire [17:0] sevenSegmentClockDividerCounter;
+    wire [1:0] sevenSegmentCounter;
+
+    // Module instantiation
+    SevenSegmentClockDivider sevenSegmentClockDivider(
+        cmosClock,
+        sevenSegmentClock,
+        sevenSegmentClockDividerCounter,
+        sevenSegmentClock,
+        sevenSegmentClockDividerCounter
+    );
+    Counter2Bit counter2Bit(
+        sevenSegmentClock,
+        sevenSegmentCounter,
+        sevenSegmentCounter
+    );
+
+    always @(*) begin
+        
+    end
 endmodule

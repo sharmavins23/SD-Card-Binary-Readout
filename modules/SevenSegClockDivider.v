@@ -11,7 +11,7 @@ module SevenSegClockDivider (
     // Inputs
     input cmosClock,                // Clock input from FPGA pin H4
     input clockIn,                  // Clock input feedback
-    input [17:0] counterIn,           // 18 Bit Counter increment
+    input [17:0] counterIn,         // 18 Bit Counter increment
     // Outputs
     output reg clockOut,            // Clock output to circuit
     output reg [17:0] counterOut    // Counter increment output
